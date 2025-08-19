@@ -3,7 +3,7 @@
  * Plugin Name: Excel to Lionwheel
  * Plugin URI: 
  * Description: Push Excel files to Lionwheel
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 5.7.2
  * Requires PHP: 7.4
  * Author: Exit-tech
