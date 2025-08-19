@@ -149,7 +149,7 @@ class Excel_To_Lionwheel_Settings {
 	 * Settings section callback
 	 */
 	public function settings_section_callback() {
-		echo '<p>' . __( 'Configure your Lionwheel API connection settings.', 'excel-to-lionwheel' ) . '</p>';
+		echo '<p>' . __( 'Configure your Lionwheel API connection settings. Use shortcode [excel_order_form] to display the excel order form.', 'excel-to-lionwheel' ) . '</p>';
 	}
 	
 	/**
