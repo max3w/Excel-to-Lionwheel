@@ -1,0 +1,120 @@
+# Copyright (C) 2024 Exit-tech
+# This file is distributed under the same license as the Excel to Lionwheel plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Excel to Lionwheel 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: 2024-01-01 12:00+0000\n"
+"Last-Translator: Exit-tech <>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: excel-to-lionwheel.php:45
+msgid "Excel to Lionwheel"
+msgstr ""
+
+#: excel-to-lionwheel.php:46
+msgid "Settings"
+msgstr ""
+
+#: excel-to-lionwheel.php:47
+msgid "Push Excel files to Lionwheel system."
+msgstr ""
+
+#: excel-to-lionwheel.php:48
+msgid "Select Excel file:"
+msgstr ""
+
+#: excel-to-lionwheel.php:49
+msgid "Upload and Process"
+msgstr ""
+
+#: excel-to-lionwheel.php:50
+msgid "Configure your Lionwheel API settings."
+msgstr ""
+
+#: excel-to-lionwheel.php:51
+msgid "API Key"
+msgstr ""
+
+#: excel-to-lionwheel.php:52
+msgid "API URL"
+msgstr ""
+
+#: excel-to-lionwheel.php:53
+msgid "API configuration is missing"
+msgstr ""
+
+#: assets/js/admin.js:15
+msgid "Please select an Excel file (.xlsx or .xls)"
+msgstr ""
+
+#: assets/js/admin.js:20
+msgid "File is too large. Maximum size: 10MB"
+msgstr ""
+
+#: assets/js/admin.js:45
+msgid "Processing..."
+msgstr ""
+
+#: assets/js/admin.js:60
+msgid "Please fill in all API settings fields"
+msgstr ""
+
+#: assets/js/admin.js:62
+msgid "Testing..."
+msgstr ""
+
+#: assets/js/admin.js:67
+msgid "API connection successful!"
+msgstr ""
+
+#: assets/js/admin.js:69
+msgid "API connection error. Please check settings."
+msgstr ""
+
+#: assets/js/admin.js:73
+msgid "Test API Connection"
+msgstr ""
+
+#: assets/js/frontend.js:35
+msgid "Please select a file"
+msgstr ""
+
+#: assets/js/frontend.js:58
+msgid "File Information"
+msgstr ""
+
+#: assets/js/frontend.js:59
+msgid "Name:"
+msgstr ""
+
+#: assets/js/frontend.js:60
+msgid "Size:"
+msgstr ""
+
+#: assets/js/frontend.js:61
+msgid "Type:"
+msgstr ""
+
+#: assets/js/frontend.js:75
+msgid "Please select an Excel file (.xlsx or .xls)"
+msgstr ""
+
+#: assets/js/frontend.js:82
+msgid "File is too large. Maximum size: 10MB"
+msgstr ""
+
+#: assets/js/frontend.js:95
+msgid "Uploading file..."
+msgstr ""
+
+#: assets/js/frontend.js:125
+msgid "File successfully uploaded and processed!"
+msgstr ""

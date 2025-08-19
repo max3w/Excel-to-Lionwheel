@@ -1,0 +1,31 @@
+# Exclude debug log file
+debug.log
+
+# Exclude uploads directory
+uploads/
+
+# WordPress specific exclusions
+wp-config.php
+.htaccess
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Logs
+*.log
