@@ -171,10 +171,10 @@ class PHPExcel_Calculation
      * Error message for any error that was raised/thrown by the calculation engine
      *
      * @access    public
-     * @var string
+     * @var string|null
      *
      */
-    public string|null $formulaError = null;
+    public $formulaError = null;
 
     /**
      * An array of the nested cell references accessed by the calculation engine, used for the debug log

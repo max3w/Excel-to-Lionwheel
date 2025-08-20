@@ -553,7 +553,7 @@ class PHPExcel_Shared_String
      * @param string $enc Encoding
      * @return int Character count
      */
-    public static function CountCharacters(string|null $value, string $enc = 'UTF-8'): int
+    public static function CountCharacters(?string $value, string $enc = 'UTF-8'): int
     {
         if (is_null($value)) return 0;
 

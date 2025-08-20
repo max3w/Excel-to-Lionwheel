@@ -605,7 +605,7 @@ class PHPExcel
      * @param  string $pName Sheet name
      * @return PHPExcel_Worksheet
      */
-    public function getSheetByName(string $pName = ''): PHPExcel_Worksheet|null
+    public function getSheetByName(string $pName = ''): ?PHPExcel_Worksheet
     {
         $worksheetCount = count($this->workSheetCollection);
         for ($i = 0; $i < $worksheetCount; ++$i) {
