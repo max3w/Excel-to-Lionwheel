@@ -30,6 +30,7 @@ define( 'EXCEL_TO_LIONWHEEL_LOG_FILE', EXCEL_TO_LIONWHEEL_DIR . 'debug.log' );
 require_once EXCEL_TO_LIONWHEEL_DIR . 'inc/admin/class-admin.php';
 require_once EXCEL_TO_LIONWHEEL_DIR . 'inc/frontend/class-frontend.php';
 require_once EXCEL_TO_LIONWHEEL_DIR . 'inc/admin/class-settings.php';
+require_once EXCEL_TO_LIONWHEEL_DIR . 'inc/class-excel-editor.php';
 
 /**
  * Main plugin class
@@ -37,6 +38,11 @@ require_once EXCEL_TO_LIONWHEEL_DIR . 'inc/admin/class-settings.php';
 class Excel_To_Lionwheel_Plugin {
 	
 	private static $instance = null;
+	
+	/**
+	 * Excel Editor instance
+	 */
+	public $editor;
 	
 	/**
 	 * Get plugin instance
@@ -64,6 +70,7 @@ class Excel_To_Lionwheel_Plugin {
 		$this->admin = new Excel_To_Lionwheel_Admin( 'excel-to-lionwheel', EXCEL_TO_LIONWHEEL_VERSION );
 		$this->frontend = new Excel_To_Lionwheel_Frontend( 'excel-to-lionwheel', EXCEL_TO_LIONWHEEL_VERSION );
 		$this->settings = new Excel_To_Lionwheel_Settings( 'excel-to-lionwheel', EXCEL_TO_LIONWHEEL_VERSION );
+		$this->editor = new ExcelToLionwheel\Inc\ExcelEditor();
 	}
 	
 	/**

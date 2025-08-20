@@ -3,6 +3,8 @@ debug.log
 
 # Exclude uploads directory
 uploads/
+/lib/phpexcel/Documentation
+/lib/phpexcel/Examples
 
 # WordPress specific exclusions
 wp-config.php

@@ -27,6 +27,9 @@ class Excel_To_Lionwheel_Admin {
 		
 		// Create database table on plugin activation
 		register_activation_hook( EXCEL_TO_LIONWHEEL_DIR . 'excel-to-lionwheel.php', array( $this, 'create_database_table' ) );
+		
+		// Add view file action
+		add_action( 'admin_post_view_excel_file', array( $this, 'handle_view_excel_file' ) );
 	}
 	
 	/**
@@ -106,6 +109,8 @@ class Excel_To_Lionwheel_Admin {
 								<td>
 									<?php if ( $order->file_path ) : ?>
 										<a href="<?php echo esc_url( $order->file_path ); ?>" target="_blank">Download File</a>
+										<br>
+										<a href="<?php echo esc_url( admin_url( 'admin-post.php?action=view_excel_file&file=' . urlencode( $order->file_path ) . '&nonce=' . wp_create_nonce( 'view_excel_file_' . $order->file_path ) ) ); ?>" target="_blank">View File</a>
 									<?php else : ?>
 										No file
 									<?php endif; ?>
@@ -179,4 +184,91 @@ class Excel_To_Lionwheel_Admin {
 			true
 		);
     }
+
+ /**
+  * Handle view Excel file action
+  */
+ public function handle_view_excel_file() {
+
+  if ( ! isset( $_GET['file'] ) || ! isset( $_GET['nonce'] ) ) {
+   wp_die( __( 'Missing required parameters.', 'excel-to-lionwheel' ) );
+  }
+
+  if ( ! wp_verify_nonce( $_GET['nonce'], 'view_excel_file_' . $_GET['file'] ) ) {
+   wp_die( __( 'Security check failed.', 'excel-to-lionwheel' ) );
+  }
+
+  $file_url = sanitize_text_field( $_GET['file'] );
+  
+  // Convert URL to filesystem path
+  $file_path = $this->url_to_path( $file_url );
+
+  // Debug information
+  $upload_dir = wp_upload_dir();
+  $uploads_path = $upload_dir['basedir'];
+  
+  // Check if file exists and is within allowed directory
+  if ( ! file_exists( $file_path ) ) {
+   wp_die( sprintf(
+     __( 'File not found. URL: %s, Path: %s, Uploads dir: %s, Plugin dir: %s', 'excel-to-lionwheel' ),
+     $file_url,
+     $file_path,
+     $uploads_path,
+     EXCEL_TO_LIONWHEEL_DIR
+   ) );
+  }
+  
+  if ( ! $this->is_valid_file_path( $file_path ) ) {
+   wp_die( sprintf(
+     __( 'Invalid path. URL: %s, Path: %s, Uploads dir: %s, Plugin dir: %s', 'excel-to-lionwheel' ),
+     $file_url,
+     $file_path,
+     $uploads_path,
+     EXCEL_TO_LIONWHEEL_DIR
+   ) );
+  }
+
+  // Use Excel Editor to display the file
+  $plugin = Excel_To_Lionwheel_Plugin::get_instance();
+  $plugin->editor->display_excel_file( $file_path, false );
+
+ }
+
+ /**
+  * Check if file path is valid and within allowed directories
+  *
+  * @param string $file_path
+  * @return bool
+  */
+ private function is_valid_file_path( $file_path ) {
+  // Get WordPress uploads directory
+  $upload_dir = wp_upload_dir();
+  $uploads_path = $upload_dir['basedir'];
+
+  // Check if file is within uploads directory or plugin directory
+  return strpos( $file_path, $uploads_path ) === 0 || strpos( $file_path, EXCEL_TO_LIONWHEEL_DIR ) === 0;
+ }
+
+ /**
+  * Convert URL to filesystem path
+  *
+  * @param string $url File URL
+  * @return string File system path
+  */
+ private function url_to_path( $url ) {
+   // Get site URL and home path
+   $site_url = site_url();
+   $home_path = ABSPATH;
+   
+   // Remove protocol and domain from URL
+   $relative_path = str_replace( $site_url, '', $url );
+   
+   // Convert to filesystem path
+   $file_path = $home_path . ltrim( $relative_path, '/' );
+   
+   // Handle Windows paths if needed
+   $file_path = str_replace( '/', DIRECTORY_SEPARATOR, $file_path );
+   
+   return $file_path;
+ }
 }
